@@ -1,0 +1,30 @@
+{
+  "name": "csms-system",
+  "version": "1.0.0",
+  "description": "这是一个node+express开发的后台管理系统",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jie",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect-history-api-fallback": "^1.6.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^8.5.0",
+    "log4js": "^4.1.0",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
+    "redis": "^2.8.0",
+    "sequelize": "^4.42.1",
+    "sequelize-auto": "^0.4.29",
+    "store": "^2.0.12",
+    "url": "^0.11.0"
+  }
+}
