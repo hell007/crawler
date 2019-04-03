@@ -1,2 +1,2 @@
 # crawler
-express + mongodb + redis + react
+express + mysql + redis + vue
