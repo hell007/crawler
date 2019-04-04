@@ -20,7 +20,7 @@
 
 3、命名
 
-    apidoc -i routes/ -o apidoc/
+    apidoc -i routes/ -o static/apidoc/
     
 4、访问
 
