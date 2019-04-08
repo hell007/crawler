@@ -1,6 +1,14 @@
 
 ## 依赖
 
+#### sequelize
+
+[sequelize](https://github.com/demopark/sequelize-docs-Zh-CN)
+
+#### jsonwebtoken
+
+[jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
+
 
 #### apiDoc 
 
