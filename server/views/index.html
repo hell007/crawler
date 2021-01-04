@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="xa-page" lang="zh-CN">
+<head>
+  <base href="<%= base %>" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="force-rendering" content="webkit" />
+  <meta name="google" value="notranslate" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,shrink-to-fit=no"
+  />
+  <title>title</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <link
+    href="assets/styles/xa-base.css"
+    rel="stylesheet"
+  />
+  <link
+    href="assets/vendors/element-ui/2.5.4/lib/theme-chalk/index.css"
+    rel="stylesheet"
+  />
+  <link
+    href="assets/styles/xa.css"
+    rel="stylesheet"
+  />
+  <link
+    href="assets/styles/xa-main.css"
+    rel="stylesheet"
+  />
+</head>
+<body class="xa-page__body">
+  <div
+    class="xa-main xa-frame"
+    v-cloak
+    v-bind:class="{'xa-frame--collapsed': menu.collapsed}"
+    id="js-app"
+  >
+    <div class="xa-frame__platform">
+      <div class="xa-frame__platform-icon"></div>
+      <div class="xa-frame__platform-name">纷销</div>
+    </div>
+    <div class="xa-frame__header">
+      <el-button
+        class="xa-sidebar-toggle"
+        type="text"
+        @click="menu.collapsed = !menu.collapsed"
+      >
+        <i
+          class="xa-icon"
+          :class="{'xa-icon-menu-collapse': !menu.collapsed, 'xa-icon-menu-expand': menu.collapsed}"
+        ></i>
+      </el-button>
+
+      <ul class="xa-header-nav">
+        <li class="xa-header-nav__item xa-header-nav__message">
+          <a href="###">
+            <el-badge is-dot v-if="message.new">
+              <i class="xa-icon xa-icon-message-o"></i>
+            </el-badge>
+            <i v-else class="xa-icon xa-icon-message-o"></i>
+          </a>
+        </li>
+        <li class="xa-header-nav__item xa-header-nav__qrcode">
+          <el-dropdown>
+            <span class="el-dropdown-link">
+              <i class="xa-icon xa-icon-qrcode"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown" class="xa-qrcode-drop">
+              <el-dropdown-item>
+                <img class="xa-qrcode-drop__img" :src="qrcode" />
+                扫描公众号二维码访问合伙人页面
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </li>
+        <li class="xa-header-nav__item xa-header-nav__user">
+          <el-dropdown @command="userCommand">
+            <span class="el-dropdown-link">
+              <img
+                class="xa-header-nav__user-avatar"
+                src="project/images/staff-avatar.jpg"
+              />
+              <span>管理员甲</span>
+              <i class="el-icon-caret-bottom el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>操作</el-dropdown-item>
+              <el-dropdown-item divided command="signout">退出</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </li>
+        <li class="xa-header-nav__item xa-header-nav__switch-platform">
+          <el-dropdown trigger="click">
+            <el-button class="xa-header-nav__switch-platform-btn" plain>
+              切换平台
+              <i class="el-icon-menu"></i>
+            </el-button>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>平台1</el-dropdown-item>
+              <el-dropdown-item>平台2</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </li>
+      </ul>
+    </div>
+    <div class="xa-frame__sidebar xa-sidebar" id="js-sidebar">
+      <el-scrollbar
+        class="xa-sidebar__scrollbar"
+        wrap-class="xa-sidebar__wrap"
+      >
+        <el-menu
+          background-color="#324157"
+          text-color="#bfcbd9"
+          active-text-color="#20a0ff"
+          :default-active="menu.active"
+          :collapse="menu.collapsed"
+          :unique-opened="true"
+        >
+          <template v-for="menu, index in menus">
+            <el-submenu
+              v-if="menu.children && menu.children.length"
+              :index="'' + index"
+            >
+              <template slot="title">
+                <i :class="menu.icon"></i>
+                <span slot="title">{{menu.name}}</span>
+              </template>
+              <el-menu-item
+                v-for="subMenu, subIndex in menu.children"
+                :index="index + '-' + subIndex"
+                :key="index + '-' + subIndex"
+              >
+               <a
+                  class="xa-sidebar__link"
+                  href="/user/index"
+                  target="workspace"
+                >
+                  {{subMenu.name}}
+                </a>
+              </el-menu-item>
+            </el-submenu>
+
+            <el-menu-item v-else :index="'' + index">
+              <a
+                class="xa-sidebar__link"
+                :href="menu.link"
+                target="workspace"
+              >
+                <i :class="menu.icon"></i>
+                <span>{{menu.name}}</span>
+              </a>
+              <span class="xa-sidebar__title" slot="title">
+                {{menu.name}}
+              </span>
+            </el-menu-item>
+          </template>
+        </el-menu>
+      </el-scrollbar>
+    </div>
+    <div class="xa-frame__main" element-loading-text="加载中">
+      <iframe
+        name="workspace"
+        id="js-workspace"
+        class="xa-frame__workspace"
+        src="about:blank"
+        v-bind:src="frame.src"
+      ></iframe>
+    </div>
+  </div>
+
+<script src="assets/vendors/core-js/2.6.5/client/shim.min.js"></script>
+<script src="assets/vendors/dom4/2.1.4/build/dom4.js"></script>
+<script src="project/scripts/config.js"></script>
+<script src="assets/vendors/vue/2.6.6/dist/vue.min.js"></script>
+<script src="assets/vendors/element-ui/2.5.4/lib/index.js"></script>
+<script src="assets/vendors/nprogress/0.2.0/nprogress.min.js"></script>
+<script src="assets/vendors/axios/0.18.0/dist/axios.min.js"></script>
+<script src="assets/vendors/store/dist/store.legacy.min.js"></script>
+<script src="assets/scripts/xa.js"></script>
+<script src="project/scripts/menus.js"></script>
+<script>
+
+  const app = new Vue({
+    el: '#js-app',
+    data: function() {
+      return {
+        menus: menus,
+        menu: {
+          active: '0',
+          collapsed: xa.$CONFIG.collapsed
+        },
+        frame: {
+          src: '/home'
+        },
+        message: {
+          new: true
+        },
+        platformDialogOpen: false,
+        qrcode: 'project/images/qrcode.png'
+      }
+    },
+    methods: {
+      userCommand(command) {
+        const self = this
+        if (command === 'signout') {
+          self.handleSignout()
+        }
+      },
+      handleSignout() {
+        axios({
+            method: 'post',
+            url: '/api/user/signout',
+            data: {},
+            headers:{
+              'Authorization': store.get('token')
+            }
+        }).then(response => {
+          //console.log('res===',response)
+          const status = response.data.success
+          const msg = response.data.msg
+          if (status) {
+            store.remove('token')
+            location.href = '/login'
+          }
+        }).catch(e => {
+          console.log('axios==='+ e)
+        })
+      }
+    },
+    created: function() {
+      var app = this
+      xa.loadHash.call(this)
+      xa.utils.delay(500).then(function() {
+        xa.setActiveMenu.call(app)
+      })
+    }
+  })
+</script>
+</body>
+</html>

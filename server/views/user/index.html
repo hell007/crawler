@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html class="xa-page xa-page--inner" lang="zh-CN">
+<head>
+<base href="<%= base %>" />
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+<meta name="force-rendering" content="webkit" />
+<meta name="google" value="notranslate" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="robots" content="noindex,nofollow" />
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,shrink-to-fit=no"
+/>
+<title>title</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link
+  href="assets/styles/xa-base.css"
+  rel="stylesheet"
+/>
+<link
+  href="assets/vendors/element-ui/2.5.4/lib/theme-chalk/index.css"
+  rel="stylesheet"
+/>
+<link
+  href="assets/styles/xa.css"
+  rel="stylesheet"
+/>
+<link
+  href="assets/styles/xa-main.css"
+  rel="stylesheet"
+/>
+</head>
+<body class="xa-page__body">
+<div class="xa-main" v-cloak id="js-app">
+  <div class="xa-content">
+    <!-- 面包屑 -->
+    <el-breadcrumb class="xa-block">
+      <el-breadcrumb-item><a href="/home">首页</a></el-breadcrumb-item>
+      <el-breadcrumb-item><a href="/user/index">用户</a></el-breadcrumb-item>
+      <el-breadcrumb-item>列表</el-breadcrumb-item>
+    </el-breadcrumb>
+
+    <!-- 内容 -->
+    <el-card class="xa-block" shadow="hover">
+      <div class="xa-block p-filter">
+        <el-form
+          class="p-filter-search"
+          inline
+          @submit.native.prevent
+          label-suffix="："
+        >
+          <el-form-item label="名称">
+            <el-input
+              placeholder="请输入"
+              @keyup.enter.native="handleFilter"
+              v-model="listQuery.name"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="状态">
+            <el-select
+              v-model="listQuery.status"
+              clearable
+              placeholder="请选择"
+            >
+              <el-option
+                v-for="item in options.status"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item>
+            <el-button
+              @click="handleFilter"
+              type="primary"
+              icon="el-icon-search"
+            >
+              查询
+            </el-button>
+            <el-button @click="handleRest">
+              重置
+            </el-button>
+          </el-form-item>
+        </el-form>
+      </div>
+
+      <div class="xa-block">
+        <el-button size="small" type="primary" icon="el-icon-plus">
+          <a href="/user/edit">新增</a>
+        </el-button>
+        <el-button size="small" type="success" @click="handleEdit(1)">使失效</el-button>
+        <el-button size="small" type="danger" @click="handleBatchDelete">
+          删除
+        </el-button>
+      </div>
+
+      <div class="xa-block" v-if="tip">
+        <div class="p-div-selected">
+          <i class="el-icon-info"></i>
+          已选择
+          <b>{{ mulSelection.length }}</b>
+          项
+        </div>
+      </div>
+
+      <div
+        class="xa-block"
+        v-loading="loading"
+        element-loading-text="正在玩命加载中..."
+      >
+        <el-table
+          ref="listTable"
+          :key="tableKey"
+          :data="list"
+          :default-sort="{order:'descending'}"
+          @selection-change="handleSelectionChange"
+          tooltip-effect="dark"
+          border
+          fit
+          highlight-current-row
+        >
+          <el-table-column
+            type="selection"
+            width="48"
+            align="center"
+            fixed
+          ></el-table-column>
+          <el-table-column
+            prop="name"
+            label="名称"
+            header-align="center"
+          ></el-table-column>
+          <el-table-column
+            prop="mobile"
+            label="手机号"
+            width="200"
+            align="center"
+          ></el-table-column>
+          <el-table-column
+            prop="status"
+            label="状态"
+            width="100"
+            align="center"
+            :filters="options.filters"
+            :filter-method="filterStatus"
+          >
+            <template slot-scope="scope">
+              <span v-if="scope.row.status==1">正常</span>
+              <span v-if="scope.row.status==2">停止</span>
+              <el-tooltip
+                v-if="scope.row.status== 2"
+                effect="dark"
+                placement="top"
+              >
+                <div slot="content">管理员关闭了它</div>
+                <i class="el-icon-info"></i>
+              </el-tooltip>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="email"
+            width="200"
+            label="邮箱"
+            align="center"
+          ></el-table-column>
+          <el-table-column
+            prop="ip"
+            width="180"
+            label="IP"
+            align="center"
+          ></el-table-column>
+          <el-table-column
+            prop="loginTime"
+            width="250"
+            label="登录时间"
+            align="center"
+          ></el-table-column>
+          <el-table-column
+            label="操作"
+            width="65"
+            align="center"
+            header-align="center"
+          >
+            <template slot-scope="scope">
+              <el-dropdown trigger="click">
+                <span class="el-dropdown-link">
+                  <el-button
+                    type="text"
+                    size="mini"
+                    icon="el-icon-more"
+                  ></el-button>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item>
+                    <i class="el-icon-view" 
+                      @click="handleEdit(scope.row)">
+                      编辑
+                    </i>
+                  </el-dropdown-item>
+                  <el-dropdown-item>
+                    <i
+                      class="el-icon-delete"
+                      @click="handleDelete(scope.row)">
+                      删除
+                    </i>
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+
+      <div class="xa-block">
+        <el-pagination
+          background
+          class="xa-text-right"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="listQuery.pageNum"
+          :page-sizes="[10,20,30,40,50]"
+          :page-size="listQuery.pageSize"
+          :total="total"
+          layout="total, sizes, prev, pager, next"
+        ></el-pagination>
+      </div>
+    </el-card>
+  </div>
+</div>
+<script src="assets/vendors/core-js/2.6.5/client/shim.min.js"></script>
+<script src="assets/vendors/dom4/2.1.4/build/dom4.js"></script>
+<script src="project/scripts/config.js"></script>
+<script src="assets/vendors/vue/2.6.6/dist/vue.min.js"></script>
+<script src="assets/vendors/element-ui/2.5.4/lib/index.js"></script>
+<script src="assets/vendors/nprogress/0.2.0/nprogress.min.js"></script>
+<script src="assets/vendors/axios/0.18.0/dist/axios.min.js"></script>
+<script src="assets/vendors/store/dist/store.legacy.min.js"></script>
+<script src="assets/scripts/xa.js"></script>
+<script>
+     
+
+/**
+vue 生命周期8个阶段：
+beforeCreate（创建前）,
+created（创建后）,
+beforeMount(载入前),
+mounted（载入后）,
+beforeUpdate（更新前）,
+updated（更新后）,
+beforeDestroy（销毁前）,
+destroyed（销毁后）
+ */
+
+//使用
+const app = new Vue({
+  el: '#js-app',
+  data: function() {
+    return {
+      list: null,
+      total: null,
+      loading: true,
+      tip: false,
+      listQuery: {
+        pageNum: 1,
+        pageSize: 10,
+        name: '',//字符串不能为null,否则影响查询
+        status: null
+      },
+      mulSelection: [],
+      tableKey: 0,
+      options: {
+        status: [
+          {value: 1, label: '正常'},
+          {value: 2, label: '关闭'}
+        ],
+        filters: [
+          {text: '正常', value: 1},
+          {text: '关闭', value: 2}
+        ]
+      }
+    }
+  },
+  computed: {},
+  watch: {},
+  methods: {
+    getList() {
+      const self = this
+      self.loading = true
+      axios({
+          method: 'post',
+          url: '/api/user/list',
+          data: {params: self.listQuery},
+          headers:{
+            'Authorization': store.get('token')
+          }
+      }).then(response => {
+        console.log('res===',response)
+        const res = response.data
+        self.list = res.rows
+        self.total = res.count
+        self.loading = false
+      }).catch(e => {
+        console.log('axios==='+ e)
+      })
+    },
+    //筛选搜索操作
+    handleFilter() {
+      //console.log("=====",this.listQuery)
+      this.listQuery.pageNum = 1
+      this.getList()
+    },
+    //重置
+    handleRest() {
+      this.listQuery.name = ''
+      this.listQuery.status = null
+    },
+    //筛选状态
+    filterStatus(value, row, column) {
+      const property = column['property']
+      //console.log(property,value,row)
+      return row[property] == value
+    },
+    //获取选中的row
+    handleSelectionChange(rows) {
+      this.tip = true
+      this.mulSelection = rows
+    },
+    //编辑
+    handleEdit(row) {
+      if (!row.id) return
+      const link = '/user/edit/' + row.id
+      xa.pushHash(link)
+      location.href = link
+    },
+    //删除操作
+    handleDelete(row) {
+      if (!row.id) return;
+      const self = this
+      this.$confirm('确定要删除"' + row.name + '"?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(function(action) {
+        axios.post('/api/user/delete', {id: row.id}).then(response => {
+          const status = response.data.status
+          const msg = response.data.data.msg
+          if (status) {
+            self.$notify({
+              title: '成功',
+              message: msg,
+              type: 'success',
+              duration: 2000
+            })
+          } else {
+            self.$notify({
+              title: '失败',
+              message: msg,
+              type: 'error'
+            })
+          }
+        })
+      })
+    },
+    //批量删除
+    handleBatchDelete() {
+      if (this.mulSelection.length === 0) return
+      const self = this
+      let ids = []
+      const rows = this.mulSelection
+      rows.map(function(row) {
+        ids.push(row.id)
+      })
+      this.$confirm('确定要删除?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(function(action) {
+        axios
+          .post('/api/user/batchdelete', {ids: ids.join(',')})
+          .then(response => {
+            const status = response.data.status
+            const msg = response.data.data.msg
+            if (status) {
+              self.$notify({
+                title: '成功',
+                message: msg,
+                type: 'success',
+                duration: 2000
+              })
+            } else {
+              self.$notify({
+                title: '失败',
+                message: msg,
+                type: 'error'
+              })
+            }
+          })
+      })
+    },
+    //页数跳转
+    handleSizeChange(val) {
+      this.listQuery.pageSize = val
+      this.getList()
+    },
+    //当前页
+    handleCurrentChange(val) {
+      this.listQuery.pageNum = val
+      this.getList()
+    }
+  },
+  beforeCreate: xa.utils.noop,
+  created: function() {
+    xa.pushHash('<%=path%>')
+    this.getList()
+  },
+  beforeMount: xa.utils.noop,
+  mounted: xa.utils.noop,
+  beforeDestory: xa.utils.noop,
+  destoryed: xa.utils.noop
+})
+</script>
+</body>
+</html>

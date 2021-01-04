@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html class="xa-page xa-page--inner" lang="zh-CN">
+<head>
+<base href="<%= base %>" />
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+<meta name="force-rendering" content="webkit" />
+<meta name="google" value="notranslate" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="robots" content="noindex,nofollow" />
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,shrink-to-fit=no"
+/>
+<title>title</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link
+  href="assets/styles/xa-base.css"
+  rel="stylesheet"
+/>
+<link
+  href="assets/vendors/element-ui/2.5.4/lib/theme-chalk/index.css"
+  rel="stylesheet"
+/>
+<link
+  href="assets/styles/xa.css"
+  rel="stylesheet"
+/>
+<link
+  href="assets/styles/xa-main.css"
+  rel="stylesheet"
+/>
+</head>
+<body class="xa-page__body">
+<div class="xa-main index" v-cloak id="js-app">
+  <el-card shadow="hover">
+    <el-row>
+      <el-col :span="12">
+        <div class="index__user user">
+          <a href="###" class="user__pic">
+            <img class="user__avatar" src="http://temp.im/100x100" alt="" />
+          </a>
+          <div class="user__info">
+            <div class="user__welcome xa-text-title">早安，Kris！</div>
+            <div class="user__identity xa-text-gray">管理员</div>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="index__statistics statistics">
+          <div class="statistics__block xa-pull-right xa-text-right">
+            <div class="xa-text-gray">
+              <span>总酬金（万元）</span>
+              <el-tooltip
+                class="item"
+                effect="dark"
+                content="xxx"
+                placement="bottom"
+              >
+                <i class="el-icon-info"></i>
+              </el-tooltip>
+            </div>
+            <div class="xa-text-title">9999992900.00</div>
+          </div>
+        </div>
+        <div class="index__statistics statistics">
+          <div class="statistics__block xa-pull-right xa-text-right">
+            <div class="xa-text-gray">
+              <span>商品数</span>
+            </div>
+            <div class="xa-text-title">233</div>
+          </div>
+        </div>
+        <div class="index__statistics statistics">
+          <div class="statistics__block xa-pull-right xa-text-right">
+            <div class="xa-text-gray">
+              <span>合伙人</span>
+            </div>
+            <div class="xa-text-title">1562</div>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+  </el-card>
+  <div class="xa-content">
+    <el-row class="xa-block xa-text-center" :gutter="20">
+      <el-col :span="6">
+        <el-card class="index__card card" shadow="hover">
+          <a href="###" class="card__link">
+            <span class="xa-text-head">126</span>
+            <span>笔</span>
+            <div class="xa-text-gray">待发货订单</div>
+          </a>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card class="index__card card" shadow="hover">
+          <a href="###" class="card__link">
+            <span class="xa-text-head">78,846</span>
+            <span>元</span>
+            <div class="xa-text-gray">待结算酬金(元)</div>
+          </a>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card class="index__card card" shadow="hover">
+          <a href="###" class="card__link">
+            <span class="xa-text-head">78,846</span>
+            <span>元</span>
+            <div class="xa-text-gray">待支付酬金 (元)</div>
+          </a>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card class="index__card card" shadow="hover">
+          <a href="###" class="card__link">
+            <span class="xa-text-head">846</span>
+            <div class="xa-text-gray">提现审核</div>
+          </a>
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <el-card class="xa-block index__units unit" shadow="hover">
+      <el-row>
+        <el-col :span="4">
+          <a href="###" class="unit__item">
+            <div class="unit__pic">
+              <img
+                class="unit__img"
+                src="assets/images/index/add.png"
+                alt=""
+              />
+            </div>
+            <div class="xa-text-center">发布商品</div>
+          </a>
+        </el-col>
+        <el-col :span="4">
+          <a href="###" class="unit__item">
+            <div class="unit__pic">
+              <img
+                class="unit__img"
+                src="assets/images/index/check.png"
+                alt=""
+              />
+            </div>
+            <div class="xa-text-center">发布商品</div>
+          </a>
+        </el-col>
+        <el-col :span="4">
+          <a href="###" class="unit__item">
+            <div class="unit__pic">
+              <img
+                class="unit__img"
+                src="assets/images/index/config.png"
+                alt=""
+              />
+            </div>
+            <div class="xa-text-center">发布商品</div>
+          </a>
+        </el-col>
+        <el-col :span="4">
+          <a href="###" class="unit__item">
+            <div class="unit__pic">
+              <img
+                class="unit__img"
+                src="assets/images/index/order-manager.png"
+                alt=""
+              />
+            </div>
+            <div class="xa-text-center">发布商品</div>
+          </a>
+        </el-col>
+        <el-col :span="4">
+          <a href="###" class="unit__item">
+            <div class="unit__pic">
+              <img
+                class="unit__img"
+                src="assets/images/index/query.png"
+                alt=""
+              />
+            </div>
+            <div class="xa-text-center">发布商品</div>
+          </a>
+        </el-col>
+        <el-col :span="4">
+          <a href="###" class="unit__item">
+            <div class="unit__pic">
+              <img
+                class="unit__img"
+                src="assets/images/index/release.png"
+                alt=""
+              />
+            </div>
+            <div class="xa-text-center">发布商品</div>
+          </a>
+        </el-col>
+      </el-row>
+    </el-card>
+
+    <div class="xa-block">
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <el-card class="index__rank rank" shadow="hover">
+            <div class="rank__head">
+              <span class="xa-text-subtitle">商品销售排行</span>
+
+              <div class="xa-pull-right">
+                <div class="rank__date-range">
+                  <el-dropdown trigger="click">
+                    <span class="el-dropdown-link">
+                      {{saleQuery.val}}
+                      <i class="el-icon-arrow-down el-icon--right"></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-item
+                        v-for="item,index in saleQuery.list"
+                        :key="index"
+                        class="clearfix"
+                        @click.native="switchQueryDateRange('saleQuery', index)"
+                      >
+                        {{item}}
+                      </el-dropdown-item>
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                </div>
+              </div>
+
+              <div class="xa-pull-right">
+                <el-radio-group v-model="saleRadio" size="small">
+                  <el-radio-button label="销量"></el-radio-button>
+                  <el-radio-button label="销售额"></el-radio-button>
+                </el-radio-group>
+              </div>
+            </div>
+            <div class="rank__body">
+              <el-table
+                class="p-table"
+                v-if="saleRadio === '销量'"
+                :data="saleRank.list"
+                border
+                size="mini"
+                height="289"
+              >
+                <el-table-column
+                  label="排名"
+                  align="center"
+                  prop="ranking"
+                  width="40"
+                ></el-table-column>
+                <el-table-column
+                  label="商品"
+                  prop="name"
+                  header-align="center"
+                ></el-table-column>
+                <el-table-column
+                  align="center"
+                  label="销量"
+                  prop="saleNum"
+                  width="80"
+                ></el-table-column>
+                <el-table-column
+                  align="center"
+                  :render-header="saleRankHead"
+                  width="80"
+                >
+                  <template slot-scope="scope">
+                    <span class="rank__gains">{{scope.row.gains}}</span>
+                    <i
+                      v-if="scope.row.isUp"
+                      class="xa-text-success xa-icon xa-icon-up"
+                    ></i>
+                    <i
+                      v-else
+                      class="xa-text-danger xa-icon xa-icon-down"
+                    ></i>
+                  </template>
+                </el-table-column>
+              </el-table>
+              <el-table
+                class="p-table"
+                v-else
+                :data="saleroomRank.list"
+                border
+                size="mini"
+                height="289"
+              >
+                <el-table-column
+                  label="排名"
+                  align="center"
+                  prop="ranking"
+                  width="40"
+                ></el-table-column>
+                <el-table-column
+                  label="商品"
+                  prop="name"
+                  header-align="center"
+                ></el-table-column>
+                <el-table-column
+                  align="center"
+                  label="销售额"
+                  prop="saleroom"
+                  width="80"
+                ></el-table-column>
+                <el-table-column
+                  align="center"
+                  :render-header="saleRankHead"
+                  width="80"
+                >
+                  <template slot-scope="scope">
+                    <span class="rank__gains">{{scope.row.gains}}</span>
+                    <i
+                      v-if="scope.row.isUp"
+                      class="xa-text-success xa-icon xa-icon-up"
+                    ></i>
+                    <i
+                      v-else
+                      class="xa-text-danger xa-icon xa-icon-down"
+                    ></i>
+                  </template>
+                </el-table-column>
+              </el-table>
+            </div>
+            <div class="rank__foot">
+              <div class="xa-text-right">
+                <el-pagination
+                  background
+                  v-if="saleRadio === '销量'"
+                  small
+                  @size-change="noop"
+                  @current-change="noop"
+                  :current-page.sync="saleRank.pagination.current"
+                  :page-size="saleRank.pagination.pageSize"
+                  layout="total, prev, pager, next"
+                  :total="saleRank.pagination.total"
+                ></el-pagination>
+                <el-pagination
+                  background
+                  v-else
+                  small
+                  @size-change="noop"
+                  @current-change="noop"
+                  :current-page.sync="saleroomRank.pagination.current"
+                  :page-size="saleroomRank.pagination.pageSize"
+                  layout="total, prev, pager, next"
+                  :total="saleroomRank.pagination.total"
+                ></el-pagination>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :span="12">
+          <el-card class="index__rank rank" shadow="hover">
+            <div class="rank__head">
+              <span class="xa-text-subtitle">合伙人酬金排行</span>
+
+              <div class="xa-pull-right">
+                <div class="rank__date-range">
+                  <el-dropdown trigger="click">
+                    <span class="el-dropdown-link">
+                      {{rewardQuery.val}}
+                      <i class="el-icon-arrow-down el-icon--right"></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-item
+                        v-for="item,index in rewardQuery.list"
+                        :key="index"
+                        class="clearfix"
+                        @click.native="switchQueryDateRange('rewardQuery', index)"
+                      >
+                        {{item}}
+                      </el-dropdown-item>
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                </div>
+              </div>
+
+              <div class="xa-pull-right">
+                <el-radio-group v-model="rewardRadio" size="small">
+                  <el-radio-button label="分销商"></el-radio-button>
+                  <el-radio-button label="分销员"></el-radio-button>
+                </el-radio-group>
+              </div>
+            </div>
+            <div class="rank__body">
+              <div class="rank__chart chart">
+                <div class="chart__tip" style="z-index: 999;">
+                  <div class="xa-text-secondary">
+                    酬金总金额（元）
+                    <el-tooltip
+                      :content="chartTip"
+                      placement="top"
+                      effect="dark"
+                    >
+                      <i class="el-icon-info"></i>
+                    </el-tooltip>
+                  </div>
+                </div>
+                <div class="chart__total"></div>
+                <template>
+                  <!-- \\\\\\ Charts |||||| -->
+                  <ve-line
+                    ref="test"
+                    :settings="vChartSetting"
+                    :extend="chartsExtend"
+                    :grid="chartsGrid"
+                    :data="chartData"
+                    :judge-width="true"
+                    height="86px"
+                  ></ve-line>
+                </template>
+              </div>
+              <el-table
+                class="p-table"
+                v-if="rewardRadio === '分销商'"
+                :data="shareBusinessRank.list"
+                border
+                size="mini"
+                height="193"
+              >
+                <el-table-column
+                  label="排名"
+                  align="center"
+                  prop="ranking"
+                  width="40"
+                ></el-table-column>
+                <el-table-column
+                  label="合伙人"
+                  prop="partner"
+                  header-align="center"
+                ></el-table-column>
+                <el-table-column
+                  align="center"
+                  label="酬金(元)"
+                  prop="money"
+                  width="100"
+                ></el-table-column>
+                <el-table-column
+                  align="center"
+                  label="订单数"
+                  prop="orderNum"
+                  width="100"
+                ></el-table-column>
+              </el-table>
+              <el-table
+                class="p-table"
+                v-else
+                :data="shareManRank.list"
+                border
+                size="mini"
+                height="193"
+              >
+                <el-table-column
+                  label="排名"
+                  align="center"
+                  prop="ranking"
+                  width="40"
+                ></el-table-column>
+                <el-table-column
+                  label="合伙人"
+                  prop="partner"
+                  header-align="center"
+                ></el-table-column>
+                <el-table-column
+                  align="center"
+                  label="酬金(元)"
+                  prop="money"
+                  width="100"
+                ></el-table-column>
+                <el-table-column
+                  align="center"
+                  label="订单数"
+                  prop="orderNum"
+                  width="100"
+                ></el-table-column>
+              </el-table>
+            </div>
+            <div class="rank__foot">
+              <div class="xa-text-right">
+                <el-pagination
+                  background
+                  v-if="rewardRadio === '分销商'"
+                  small
+                  @size-change="noop"
+                  @current-change="noop"
+                  :current-page.sync="shareBusinessRank.pagination.current"
+                  :page-size="shareBusinessRank.pagination.pageSize"
+                  layout="total, prev, pager, next"
+                  :total="shareBusinessRank.pagination.total"
+                ></el-pagination>
+                <el-pagination
+                  background
+                  v-else
+                  small
+                  @size-change="noop"
+                  @current-change="noop"
+                  :current-page.sync="shareManRank.pagination.current"
+                  :page-size="shareManRank.pagination.pageSize"
+                  layout="total, prev, pager, next"
+                  :total="shareManRank.pagination.total"
+                ></el-pagination>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
+
+    <div class="xa-block xa-text-center xa-text-gray">
+      SDP-社交化分销平台
+    </div>
+  </div>
+
+  <el-dialog
+    class="xa-dialog xa-dialog--sm"
+    title="平台设置"
+    :visible.sync="guideVisible"
+  >
+    <div class="xa-text-center xa-block">
+      <i
+        class="xa-icon xa-icon-config text-primary"
+        style="font-size: 70px"
+      ></i>
+    </div>
+    <div class="xa-block">
+      进行分销前，您需要进行一些基本设置，以保证可以在您的公众号正常发布商品，招募合伙人，完成商品交易等
+    </div>
+    <span slot="footer" class="dialog-footer">
+      <el-button type="primary" @click="guideVisible = false">
+        现在就去设置
+      </el-button>
+    </span>
+  </el-dialog>
+</div>
+
+<script src="assets/vendors/core-js/2.6.5/client/shim.min.js"></script>
+<script src="assets/vendors/dom4/2.1.4/build/dom4.js"></script>
+<script src="project/scripts/config.js"></script>
+<script src="assets/vendors/vue/2.6.6/dist/vue.min.js"></script>
+<script src="assets/vendors/element-ui/2.5.4/lib/index.js"></script>
+<script src="assets/vendors/nprogress/0.2.0/nprogress.min.js"></script>
+<script src="assets/vendors/axios/0.18.0/dist/axios.min.js"></script>
+<script src="assets/vendors/store/dist/store.legacy.min.js"></script>
+<script src="assets/scripts/xa.js"></script>
+<script src="assets/vendors/echarts/3.7.2/echarts.min.js"></script>
+<script src="assets/vendors/v-charts/1.8.4/index.js"></script>
+<script>
+
+  var _ = xa.utils
+  xa.utils.setDefaultChartColor(xa.defaultChartColors)
+  var noop = _.noop
+
+  const app = new Vue({
+    el: '#js-app',
+    data: function() {
+      return {
+        guideVisible: true,
+        saleRadio: '销量',
+        rewardRadio: '分销商',
+        saleRank: {
+          list: [],
+          pagination: {
+            current: 1,
+            pageSize: 25,
+            total: 1001
+          }
+        },
+        saleroomRank: {
+          list: [],
+          pagination: {
+            current: 1,
+            pageSize: 25,
+            total: 1001
+          }
+        },
+        shareBusinessRank: {
+          list: [],
+          pagination: {
+            current: 1,
+            pageSize: 25,
+            total: 1001
+          }
+        },
+        shareManRank: {
+          list: [],
+          pagination: {
+            current: 1,
+            pageSize: 25,
+            total: 1001
+          }
+        },
+        gainsTemp: '周月季',
+        saleQuery: {
+          val: '近一周',
+          list: ['近一周', '近一月', '近三月']
+        },
+        rewardQuery: {
+          val: '近一周',
+          list: ['近一周', '近一月', '近三月']
+        },
+        chartData: {
+          columns: ['日期', '酬金总金额（元)'],
+          rows: []
+        },
+        vChartSetting: {
+          area: true
+        },
+        axis: {
+          axisLabel: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          },
+          axisLine: {
+            show: false
+          },
+          boundaryGap: false
+        },
+        chartsGrid: {
+          show: false,
+          width: '97%',
+          containLabel: false,
+          top: 10,
+          left: '1.5%',
+          height: 76
+        },
+        chartsExtend: {
+          legend: {
+            show: false
+          },
+          xAxis: {},
+          yAxis: {},
+          series: {
+            // symbol: 'none',
+          },
+          tooltip: {
+            backgroundColor: 'transparent',
+            textStyle: {
+              color: '#666'
+            },
+            padding: 0,
+            axisPointer: {
+              type: 'none'
+            },
+            position: {}
+          }
+        },
+        chartTip: '酬金包含统计周期内待结算与已结算的总额'
+      }
+    },
+    computed: {},
+    watch: {},
+    methods: {
+      noop: noop,
+      saleRankHead: function() {
+        var name =
+          this.gainsTemp[this.saleQuery.list.indexOf(this.saleQuery.val)] +
+          '涨幅'
+        var tip = '涨幅按照统计周期与上一周期相比较'
+        return _.createTheadTip.call(this, name, tip)
+      },
+      switchQueryDateRange: function(str, index) {
+        this[str].val = this[str].list[index]
+        this.chartDataChange()
+        console.log(this.chartData.rows)
+      },
+      chartDataChange: function() {
+        this.chartData.rows = Array.from({
+          length: [7, 4, 13][
+            this.rewardQuery.list.indexOf(this.rewardQuery.val)
+          ]
+        }).map((item, index) => ({
+          日期: index,
+          '酬金总金额（元)': _.random(1000, 5000),
+          gains: Number(_.randomOne(['+', '-']) + _.random(1, 10) / 100)
+        }))
+      }
+    },
+    beforeCreate: noop,
+    created: function() {
+      xa.pushHash('<%=path%>')
+      
+      var _this = this
+      axios({
+          method: 'post',
+          url: '/api/test/token',
+          data: {},
+          headers:{
+            'Authorization': store.get('token')
+          }
+      }).then(response => {
+        console.log('res===',response)
+        
+      }).catch(e => {
+        console.log('axios==='+ e)
+      })
+
+
+      this.chartDataChange()
+
+      this.saleRank.list = Array.from({length: 8}).map((item, index) => ({
+        ranking: index + 1,
+        name:
+          'productName-' +
+          Math.random()
+            .toString(16)
+            .slice(2, 8),
+        saleNum: 500 - index * 10,
+        gains: _.random(10, 150) + '%',
+        isUp: _.randomOne([0, 1])
+      }))
+
+      this.saleroomRank.list = Array.from({length: 8}).map(
+        (item, index) => ({
+          ranking: index + 1,
+          name:
+            'productName-' +
+            Math.random()
+              .toString(16)
+              .slice(2, 8),
+          saleroom: 1000000 - index * 10000,
+          gains: _.random(10, 150) + '%',
+          isUp: _.randomOne([0, 1])
+        })
+      )
+
+      this.shareBusinessRank.list = Array.from({length: 5}).map(
+        (item, index) => ({
+          ranking: index + 1,
+          partner: 'partner',
+          money: _.random(100, 500),
+          orderNum: _.random(100, 500)
+        })
+      )
+
+      this.shareManRank.list = Array.from({length: 5}).map(
+        (item, index) => ({
+          ranking: index + 1,
+          partner: 'partner',
+          money: _.random(10, 500),
+          orderNum: _.random(100, 500)
+        })
+      )
+
+      this.chartsExtend.xAxis = this.axis
+      this.chartsExtend.yAxis = this.axis
+
+      this.chartsExtend.tooltip.position = function(
+        point,
+        params,
+        dom,
+        rect,
+        size
+      ) {
+        var val = params[0].value[1]
+        var index = params[0].value[0]
+        var gains = _this.chartData.rows[index].gains
+        dom.innerHTML =
+          '<div class="xa-text-secondary">' +
+          '<span class="xa-text-title xa-text-black">' +
+          val +
+          '</span>' +
+          '<span class="chart__gains">' +
+          ((gains * 100).toFixed(2) + '%') +
+          '</span>' +
+          '<i class="xa-icon ' +
+          (gains < 0
+            ? 'xa-icon-down xa-text-danger'
+            : 'xa-icon-up xa-text-success') +
+          '"></i>'
+        ;('</div>')
+      }
+    },
+    beforeMount: noop,
+    mounted: function() {
+      console.log(this.$refs)
+    },
+    beforeDestory: noop,
+    destoryed: noop
+  })
+</script>
+</body>
+</html>
